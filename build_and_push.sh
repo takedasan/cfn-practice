@@ -1,6 +1,6 @@
 #!/bin/sh
 
-apt-get update && apt-get install -y awscli
+sudo apt-get update && sudo apt-get install -y awscli
 
 $(aws ecr get-login --no-include-email --region us-east-1)
 docker build -t sample-repository .
