@@ -1,0 +1,22 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.12.0
+      
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - run: 
+          command: |
+            $(aws ecr get-login --no-include-email --region us-east-1)
+            docker build -t sample-repository .
+            docker tag sample-repository:latest 273930194378.dkr.ecr.us-east-1.amazonaws.com/sample-repository:latest
+            docker push 273930194378.dkr.ecr.us-east-1.amazonaws.com/sample-repository:latest
+
+
