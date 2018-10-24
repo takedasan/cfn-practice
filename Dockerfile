@@ -1,7 +1,4 @@
-FROM scratch
-MAINTAINER Cogniteev <tech@cogniteev.com>
+FROM centos
 
-ADD echo /bin/echo
-
-# NOP
-CMD ["/bin/echo", "-n"]
+RUN echo "now building..."
+CMD echo "now running..."
